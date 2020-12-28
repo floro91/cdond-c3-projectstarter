@@ -1,5 +1,8 @@
 version: 2.1
-            
+
+orbs:
+  slack: circleci/slack@4.0    
+     
 jobs:
   build-frontend:
     docker:
@@ -62,6 +65,10 @@ jobs:
              cd backend
              npm i
              npm run test
+             return 1
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
 
   scan-frontend:
     docker:
@@ -76,6 +83,9 @@ jobs:
             cd frontend
             npm i
             npm audit --audit-level=critical
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
 
   scan-backend:
     docker:
@@ -90,6 +100,9 @@ jobs:
              cd backend
              npm i
              npm audit --audit-level=critical
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
             
 
 workflows:
