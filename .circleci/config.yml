@@ -136,14 +136,14 @@ jobs:
           at: ~/
       - run:
           name: Install dependencies
+          working_directory: ./.circleci/ansible
           command: |
-            cd .circleci/ansible
-            ansible-playbook -i inventory.txt configure-server.yml
+            apk add --update ansible
       - run:
           name: Configure server
+          working_directory: ./.circleci/ansible
           command: |
-            # Your code here
-            exit 1
+            ansible-playbook -i inventory.txt configure-server.yml
       # Here's where you will add some code to rollback on failure 
 
 workflows:
