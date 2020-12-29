@@ -137,7 +137,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            ansible-playbook -i inventory.txt .circleci/configure-server.yml
+            ansible-playbook -i inventory.txt .circleci/ansible/configure-server.yml
       - run:
           name: Configure server
           command: |
