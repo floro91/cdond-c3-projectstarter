@@ -11,10 +11,20 @@
 
   pre_tasks:
     - name: "wait 600 seconds for target connection to become reachable/usable."
-      # Your code here
+      shell: sleep 600
 
     - name: "install python for Ansible."
-      # Your code here
+      raw: yum -y install python
 
   roles:
-    # Your code here
+    - configure-server
+
+  environment:
+    ENVIRONMENT: production
+    TYPEORM_CONNECTION: postgres
+    TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity.ts
+    TYPEORM_HOST: udapeople-prod.cxrzkkykqxtl.us-east-2.rds.amazonaws.com
+    TYPEORM_PORT: 5432
+    TYPEORM_USERNAME: FloRo
+    TYPEORM_PASSWORD: udapeople123
+    TYPEORM_DATABASE: udapeople-prod
