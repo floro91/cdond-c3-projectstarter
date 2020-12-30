@@ -186,6 +186,7 @@ jobs:
       - run:
           name: Send migration results to memstash
           command: |
+            cd backend
             sudo cat migrations_dump.txt
             if grep -q "has been executed successfully." migrations_dump.txt
             then
