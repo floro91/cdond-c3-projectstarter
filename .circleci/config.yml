@@ -22,8 +22,8 @@ commands:
           name: Revert migrations
           when: on_fail
           command: |
-            success_migration = curl -H "token: ${CIRCLE_WORKFLOW_ID}" --request GET https://api.memstash.io/values/migration_${CIRCLE_WORKFLOW_ID}
-            if(( ${success_migration} == 1 )); 
+            success_migration=curl -H "token: ${CIRCLE_WORKFLOW_ID}" --request GET https://api.memstash.io/values/migration_${CIRCLE_WORKFLOW_ID}
+            if((${success_migration}==1)); 
             then
               cd ~/project/backend
               npm install
