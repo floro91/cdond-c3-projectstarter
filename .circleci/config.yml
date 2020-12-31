@@ -177,8 +177,9 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            sudo apt install nodejs
-            sudo apt install tar gzip
+            curl -sL https://rpm.nodesource.com/setup_lts.x | bash -
+            yum -y install nodejs
+            yum -y install tar gzip
       - run:
           name: Get backend url
           command: |
@@ -192,6 +193,7 @@ jobs:
           name: Deploy frontend objects
           command: |
             cd frontend
+            npm install
             npm run build
             tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
             aws s3 sync dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}
