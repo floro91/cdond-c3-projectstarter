@@ -23,6 +23,7 @@
 
   roles:
     - configure-server
+    - configure-prometheus-node-exporter
 
   environment:
     TYPEORM_CONNECTION: "{{ lookup('env','TYPEORM_CONNECTION') }}"
