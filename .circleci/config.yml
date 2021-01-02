@@ -335,7 +335,7 @@ jobs:
           command: |
             echo Old Workflow Id: "${OldWorkflowID}"
             echo Current Workflow Id: "${CIRCLE_WORKFLOW_ID:0:7}"
-            if [[ !-z "${OLD_WORKFLOW_ID}" && "${STACKS[@]}" =~ "${OldWorkflowID}"]]
+            if [[ ! -z "${OLD_WORKFLOW_ID}" ]] && [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
             then
               echo Remove old stack
               aws s3 rb s3://udapeople-${OldWorkflowID} --force
