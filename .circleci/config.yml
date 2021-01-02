@@ -308,16 +308,6 @@ jobs:
       - run:
           name: Update cloudfront distribution
           command: |
-            cd .circleci
-            export OLD_WORKFLOW_ID=$(aws cloudformation list-exports --query "Exports[?Name=='WorkflowID'].Value" --region us-east-2 --no-paginate --output text)
-            echo ${OLD_WORKFLOW_ID}
-            if [ -n "${OLD_WORKFLOW_ID}" ];
-            then
-              echo "Delete old cloudfront stack"
-              aws cloudformation delete-stack  \
-                --stack-name udapeople-cloudfront-${OLD_WORKFLOW_ID} 
-            fi
-
             aws cloudformation deploy \
             --template-file .circleci/files/cloudfront.yml \
             --tags project=udapeople \
