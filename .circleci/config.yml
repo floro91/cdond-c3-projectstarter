@@ -380,3 +380,27 @@ workflows:
             branches:
               only:
                 - master
+      - deploy-backend:
+          requires: [run-migrations]
+          filters:
+            branches:
+              only:
+                - master
+      - smoke-test:
+          requires: [deploy-backend, deploy-frontend]
+          filters:
+            branches:
+              only:
+                - master
+      - cloudfront-update:
+          requires: [smoke-test]
+          filters:
+            branches:
+              only:
+                - master
+      - cleanup:
+          requires: [cloudfront-update]
+          filters:
+            branches:
+              only:
+                - master
