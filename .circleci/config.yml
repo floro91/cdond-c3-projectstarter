@@ -306,7 +306,7 @@ jobs:
       - run:
           name: Update cloudfront distribution
           command: |
-          curl -H "Content-Type: text/plain" -H "token: ${CIRCLE_WORKFLOW_ID}" --request PUT --data "${CIRCLE_WORKFLOW_ID}" https://api.memstash.io/values/workflow_${CIRCLE_WORKFLOW_ID}
+            curl -H "Content-Type: text/plain" -H "token: ${CIRCLE_WORKFLOW_ID}" --request PUT --data "${CIRCLE_WORKFLOW_ID}" https://api.memstash.io/values/workflow_${CIRCLE_WORKFLOW_ID}
             aws cloudformation update-stack \
             --template-file .circleci/files/cloudfront.yml \
             --tags project=udapeople \
