@@ -1,5 +1,5 @@
 URL01: https://github.com/floro91/cdond-c3-projectstarter
 URL02: http://udapeople-5b55bb1.s3-website.us-east-2.amazonaws.com
-URL03: http://udapeople-7521c08.s3-website.us-east-2.amazonaws.com
-URL04: http://ec2-3-137-194-252.us-east-2.compute.amazonaws.com
+URL03: http://udapeople-46c57fa.s3-website.us-east-2.amazonaws.com
+URL04: http://ec2-3-138-37-159.us-east-2.compute.amazonaws.com
 URL05: http://ec2-18-221-73-148.us-east-2.compute.amazonaws.com:9090/targets
